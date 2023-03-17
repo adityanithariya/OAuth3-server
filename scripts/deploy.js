@@ -1,4 +1,4 @@
-import { writeFileSync } from "fs";
+const { writeFileSync } = require("fs");
 
 async function main() {
     let address = {};
