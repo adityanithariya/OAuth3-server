@@ -33,14 +33,14 @@ enum Class {
     class_12
 }
 
-struct Relative {
+struct CareOf {
     Relation relation;
     string name;
 }
 
 struct COV {
     string class_of_vehicle;
-    uint40 issue_date;
+    uint256 issue_date;
 }
 
 struct PhoneNumber {
@@ -64,9 +64,9 @@ struct Aadhaar {
     PhoneNumber phone_number;
     string email;
     Address addr;
-    Relative relative;
+    CareOf care_of;
     DOB date_of_birth;
-    uint40 issue_date;
+    uint256 issue_date;
     bool is_verified;
 }
 
@@ -82,14 +82,14 @@ struct BirthCertif {
     string uid; // BirthCertif Number
     DOB date_of_birth;
     Address birth_place;
-    uint40 issue_date;
+    uint256 issue_date;
 }
 
 struct DeathCertif {
     string id; // IPFS Hash
     string uid; // DC Number
-    uint40 death_date;
-    uint40 issue_date;
+    uint256 death_date;
+    uint256 issue_date;
 }
 
 struct MarksSheet {
@@ -98,17 +98,17 @@ struct MarksSheet {
     Class class;
     uint8 marks;
     Unit unit;
-    uint40 issue_date;
-    uint8 [2]year;
+    uint256 issue_date;
+    uint8[2] year;
 }
 
 struct DrivingLicense {
     string id; // IPFS Hash
     string uid; // DL Number
-    uint40 reg_date; // DLR
-    uint40 valid_till;
-    uint40 issue_date; // DOI
-    mapping (uint => COV) cov; // Class of Vehicles & DOI
+    uint256 reg_date; // DLR
+    uint256 valid_till;
+    uint256 issue_date; // DOI
+    mapping(uint => COV) cov; // Class of Vehicles & DOI
 }
 
 struct User {
@@ -118,9 +118,9 @@ struct User {
     PAN pan;
     BirthCertif birth_certificate;
     DeathCertif death_certificate;
-    MarksSheet [2]marks_sheet;
+    MarksSheet[2] marks_sheet;
     DrivingLicense driving_license;
-    uint40 reg_date;
+    uint256 reg_date;
     bool is_active;
 }
 
@@ -135,5 +135,10 @@ struct Client {
     address id;
     string uid;
     string secret;
-    mapping (string => Resource) users; // uid => Resource
+    mapping(string => Resource) res; // uid => Resource
+}
+
+struct idPair {
+    address id;
+    string uid;
 }
