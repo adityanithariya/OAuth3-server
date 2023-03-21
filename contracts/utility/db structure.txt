@@ -1,0 +1,72 @@
+Aadhaar Card
+    string id: IPFS Hash                    - edit
+    string uid: AC Number                   - freeze
+    string vid: Virtual Id                  - edit
+    string name                             - edit
+    Gender gender                           - freeze
+    PhoneNumber phone_number: Code & Phone Number - edit
+    string email                            - edit
+    Address addr                            - edit
+    Relative relative: Relative for reference, like S/O {{ Father's Name }} - freeze
+    DOB date_of_birth                       - edit
+    uint40 issue_date                       - auto
+    bool is_verified                        - auto
+
+PAN Card
+    string id: IPFS Hash                    - edit
+    string uid: PC Number                   - freeze
+    bool is_active: PC Status               - edit
+    bool is_verified                        - auto
+
+Birth Certificate
+    string id: IPFS Hash                    - edit
+    string uid: BirthCertif Number          - edit
+    Address birth_place                     - freeze
+    uint40 issue_date                       - auto
+
+Death Certificate
+    string id: IPFS Hash                    - edit
+    string uid: DC Number                   - edit
+    uint40 death_date                       - edit
+    uint40 issue_date                       - auto
+
+MarksSheet                                  - edit
+    string id: IPFS Hash
+    string institute_name
+    Class class
+    uint8 marks
+    Unit unit
+    uint40 issue_date
+    uint8 [2]year: financial year
+
+Driving License                             - edit
+    string id: IPFS Hash
+    string uid: DL Number
+    uint40 reg_date: DLR
+    uint40 valid_till
+    uint40 issue_date: DOI
+    mapping (uint => COV) cov: Class of Vehicles & DOI
+
+User
+    address id: Blockchain Address          - edit
+    string uid: Unique Identifier - Needed incase of address transfer - once
+    Aadhaar aadhaar
+    PAN pan
+    BirthCertif birth_certificate
+    DeathCertif death_certificate
+    MarksSheet [2]marks_sheet
+    DrivingLicense driving_license
+    uint40 reg_date: Registration Date      - once
+    bool is_active: Is Account Active       - edit
+
+Resource
+    string uid: User Unique Identifier      - once
+    string token: Access Token              - once
+    string scope: Scope                     - edit
+    bool is_active: Access Rights           - edit
+
+Client
+    address id: Client Address
+    string uid: Client Id
+    string secret: Client Secret
+    mapping (string => Resource) users: users[uid] => Resource

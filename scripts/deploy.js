@@ -1,4 +1,4 @@
-import { writeFileSync } from "fs";
+const { writeFileSync } = require("fs");
 
 async function main() {
     let address = {};
@@ -7,8 +7,14 @@ async function main() {
 
     await oauth3.deployed();
     address.oauth3 = oauth3.address;
+    
+    const Client = await ethers.getContractFactory("ClientContract");
+    const client = await Client.deploy();
 
-    console.log(`OAuth3 deployed to ${oauth3.address}`);
+    await client.deployed();
+    address.client = client.address;
+
+    console.log(`OAuth3 deployed to ${oauth3.address}, client deployed to ${client.address}`);
     writeFileSync("cache/address.json", JSON.stringify(address));
 
     return oauth3;
