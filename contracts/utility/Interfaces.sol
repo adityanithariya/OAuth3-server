@@ -25,6 +25,7 @@ interface ClientInter {
     ) external;
 
     function getRes(
+        address client_id,
         string memory user_uid
     ) external view returns (Resource memory res);
 

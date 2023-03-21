@@ -87,9 +87,10 @@ contract ClientContract is ClientInter {
     }
 
     function getRes(
+        address client_id,
         string memory user_uid
     ) external view ownerOrClient returns (Resource memory res) {
-        res = clients[msg.sender].res[user_uid];
+        res = clients[client_id].res[user_uid];
     }
 
     function toggleStatus(

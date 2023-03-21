@@ -9,7 +9,6 @@ import "./utility/Interfaces.sol";
 contract OAuth3 is OAuth3Inter {
     address[2] addrs;
     mapping(address => User) users;
-    idPair[] userList;
     uint256 totalUsers;
 
     constructor() {
@@ -46,8 +45,6 @@ contract OAuth3 is OAuth3Inter {
         user.uid = uid;
         user.reg_date = block.timestamp;
         user.is_active = true;
-        userList[totalUsers].id = msg.sender;
-        userList[totalUsers].uid = uid;
         totalUsers++;
     }
 
